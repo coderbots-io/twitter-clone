@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, refresh } from "next/cache";
 import { query } from "@/lib/db";
 import {
   createSession,
@@ -68,6 +68,10 @@ export async function login(
 export async function logout() {
   await destroySession();
   redirect("/login");
+}
+
+export async function refreshFeed(): Promise<void> {
+  refresh();
 }
 
 export async function createPost(formData: FormData): Promise<void> {

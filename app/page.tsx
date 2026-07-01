@@ -3,6 +3,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { query } from "@/lib/db";
 import Composer from "./Composer";
 import LogoutButton from "./LogoutButton";
+import RefreshButton from "./RefreshButton";
 
 type FeedPost = {
   id: number;
@@ -79,6 +80,8 @@ export default async function Home() {
           to post.
         </div>
       )}
+
+      <RefreshButton />
 
       <section>
         {posts.length === 0 ? (
